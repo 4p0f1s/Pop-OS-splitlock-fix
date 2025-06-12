@@ -23,3 +23,30 @@ This script allows you to safely:
    ```bash
    git clone https://github.com/4p0f1s/splitlock-fix.git
    cd splitlock-fix
+   ```
+
+2. Make the script executable:
+
+   ```bash
+   chmod +x splitlock-fix.sh
+   ```
+   
+3. Run the script with root privileges:
+
+   ```bash
+   sudo ./splitlock-fix.sh
+   ```
+   
+The script will:
+
+- Detect if split_lock_detect=off is already applied.
+- Ask whether you want to enable or disable the option.
+- Apply the change via kernelstub.
+
+## How to Revert
+
+Run the script again. If the fix is active, it will offer to remove it and restore the default kernel behavior.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/4p0f1s/Pop-OS-splitlock-fix/blob/main/LICENSE) file for details.
