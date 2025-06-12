@@ -11,6 +11,16 @@ This script allows you to safely:
 - Disable `split_lock_detect` to improve stability in those cases.
 - Re-enable it if needed later.
 
+## What does this fix do? 
+
+Modern Linux kernels (5.8+) include a feature called split_lock_detect that traps certain low-level CPU instructions known as split locks. These operations are inefficient and can affect performance on multi-core systems.
+
+Some applications — particularly games running under Proton or Wine — may unintentionally trigger split locks. When this happens, the Linux kernel raises a special exception (#AC trap), which can cause the process to crash or freeze the system entirely if unhandled.
+
+By disabling split_lock_detect, this script prevents the kernel from interrupting such operations. This allows games or other applications to continue running, avoiding system freezes or crashes — at the cost of ignoring a relatively rare performance warning.
+
+This fix is safe for desktop and gaming systems. It is not recommended to disable split lock detection in security-critical or low-level software development environments.
+
 ## Requirements
 
 - Pop!_OS 20.04+ using `systemd-boot` (default for modern installations)
